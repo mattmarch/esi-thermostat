@@ -28,7 +28,7 @@ export const login = async (email: string, password: string): Promise<User> => {
     password_encryption: "password_encryption",
   };
 
-  const response = await fetch(`${process.env.BASE_URL}/login`, {
+  const response = await fetch(`${config.baseUrl}/login`, {
     method: "POST",
     body: new URLSearchParams(payload),
   });
