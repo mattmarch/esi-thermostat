@@ -1,8 +1,8 @@
 import * as crypto from "crypto";
+import config from "./config";
 
 const encoding = "utf-8";
 const iv = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
-const key = "%@@@@@*^";
 
 const encryptDES = (data: string, key: string): string => {
   const cipher = crypto.createCipheriv(
@@ -24,7 +24,7 @@ export type User = {
 export const login = async (email: string, password: string): Promise<User> => {
   const payload = {
     email,
-    password: encryptDES(password, key),
+    password: encryptDES(password, config.passwordEncryptKey),
     password_encryption: "password_encryption",
   };
 
